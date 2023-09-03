@@ -8,7 +8,7 @@ module.exports = {
     createBlog: async (req, res) => {
         try {
             const { title } = req.body
-            const blog = await db.Blogs.create({ title, inclue: true })
+            const blog = await db.Blogs.create({ title })
             console.log(title)
             res.status(200).json(blog)
         } catch (error) {

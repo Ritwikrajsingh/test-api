@@ -2,14 +2,14 @@
   "name": "nordic_rose",
   "version": "1.0.0",
   "description": "An article blog api",
-  "main": "app.js",
+  "main": "src/app.js",
   "repository": "https://github.com/ritwiksingh-tmpl/Nordic_rose",
   "author": "Ritwik Raj Singh",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "nodemon app",
-    "start": "node app.js",
+    "dev": "nodemon src/app",
+    "start": "node src/app",
     "test": "echo 'Error: no test specified' && exit 1"
   },
   "dependencies": {
