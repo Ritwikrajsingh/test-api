@@ -5,57 +5,46 @@ module.exports = {
     createBlog: async (req, res) => {
         try {
             const { title } = req.body
-            if (!title) return res.status(400).json({ message: 'title cannot be empty' })
+            if (!title) {
+                return res.status(400).json({
+                    message: 'Title cannot be empty!'
+                })
+            }
+
             const blog = await blogService.createBlog(title)
+
+            if (blog.error) throw new Error(blog.error)
+
             res.status(200).json(blog)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ message: 'Something went wrong!' })
+            res.status(500).statusText("blah blah").json({ error: 'Something went wrong!' })
         }
     },
 
     getBlogs: async (req, res) => {
         try {
-            const blogs = await db.Blogs.findAll({
-                include: [
-                    {
-                        model: db.Comments,
-                        include: [
-                            {
-                                model: db.Replies,
-                            },
-                        ],
-                    },
-                ],
-            });
+            const blogs = await blogService.getBlogs()
+            if (blogs.message) { return res.status(404).json(blogs) }
+            else if (blogs.error) throw new Error(blogs.error)
 
             res.status(200).json(blogs);
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: "Internal server error" });
+            res.status(500).json({ error: "Something went wrong!" });
         }
     },
 
     getOneBlog: async (req, res) => {
         try {
             const { blogId } = req.params
-            console.log(blogId);
-            const blog = await db.Blogs.findOne({
-                where: { id: blogId },
-                include: [
-                    {
-                        model: db.Comments,
-                        include: [
-                            {
-                                model: db.Replies,
-                            },
-                        ],
-                    },
-                ],
-            });
+            const blog = await blogService.getOneBlog(blogId)
+            if (blog.message) { return res.status(404).json(blog) }
+            else if (blog.error) throw new Error(blog.error)
             res.status(200).json(blog)
         } catch (error) {
-            console.log(error)
+            console.error(error);
+            res.status(500).json({ error: "Something went wrong!" });
         }
     }
 }
