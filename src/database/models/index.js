@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(path.join(__dirname, '../config/config.js'))[env];
+const config = require(path.join(__dirname, '../config'))[env];
 const db = {};
 
 
@@ -45,4 +45,3 @@ db.Sequelize = Sequelize;
 module.exports = db;
 
 /*"db_uri": "postgres://admin:ORcmE4STJ7b1U6p2rKGqxLgUibo987M2@dpg-cicvq2p5rnuhheu09680-a.singapore-postgres.render.com/testdb_67d5?ssl=true"*/
-
