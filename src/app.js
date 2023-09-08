@@ -3,9 +3,10 @@ require("dotenv").config();
 const cors = require("cors")
 const express = require('express');
 const db = require('./database/models');
-const config = require("./database/config/routes")
+const routes = require("./routes")
 const app = express();
 
+// PARSE INCOMING REQUESTS WITH JSON PAYLOADS 
 app.use(express.json())
 
 // CORS SETUP
@@ -21,12 +22,12 @@ app.use((res, req, next) => {
     next()
 })
 
-// Routes
-config(app)
+// ROUTES
+routes(app)
 
+// SERVER
 PORT = process.env.PORT || 8000
 
-// Server
 app.listen(PORT, async () => {
     try {
         await db.sequelize.authenticate();
@@ -36,5 +37,4 @@ app.listen(PORT, async () => {
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
-}
-)
+})

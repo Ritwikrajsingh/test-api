@@ -27,8 +27,8 @@ module.exports = {
 
             return blogs
         } catch (error) {
-            console.log(`#createBlog: Error: ${error.message}`)
-            return { error: `#createBlog: Error: ${error.message}` }
+            console.log(`#getBlogs: Error: ${error.message}`)
+            return { error: `#getBlogs: Error: ${error.message}` }
         }
     },
 
@@ -52,8 +52,8 @@ module.exports = {
             return blog
 
         } catch (error) {
-            console.log(`#createBlog: Error: ${error.message}`)
-            return { error: `#createBlog: Error: ${error.message}` }
+            console.log(`#getOneBlog: Error: ${error.message}`)
+            return { error: `#getOneBlog: Error: ${error.message}` }
         }
     }
 }

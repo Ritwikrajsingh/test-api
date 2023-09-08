@@ -17,4 +17,4 @@ const development = {
   db_uri: DB_URI
 };
 
-module.exports = {development}
+module.exports = { development }
