@@ -1,8 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Replies = sequelize.define("Replies", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
     reply: {
-      type: DataTypes.STRING,
-      unique: true,
+      type: DataTypes.STRING
     },
   }, {
     freezeTableName: true,
