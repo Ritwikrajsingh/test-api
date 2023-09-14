@@ -10,6 +10,6 @@ const welcomeController = require('../controllers/welcome')
 // welcome.get('/comment/:blogId', welcomeController.getComment)
 
 // welcome.post('/reply/:commentId', welcomeController.createReply)
-welcome.get('/reply/:commentId', welcomeController.getReply)
+// welcome.get('/reply/:commentId', welcomeController.getReply)
 
 module.exports = welcome

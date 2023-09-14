@@ -11,4 +11,12 @@ router.post('/:commentId',
     /* get from data storage */
     controller.createReply)
 
+router.get('/:commentId',
+
+    /* validate request */
+    validator.validateRequestURL,
+
+    /* get from data storage */
+    controller.getReplies)
+
 module.exports = router
