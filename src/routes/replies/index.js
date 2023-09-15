@@ -19,4 +19,12 @@ router.get('/:commentId',
     /* get from data storage */
     controller.getReplies)
 
+router.get('/single/:replyId',
+
+    /* validate request */
+    validator.validateRequestURL,
+
+    /* get from data storage */
+    controller.getAReply)
+
 module.exports = router
