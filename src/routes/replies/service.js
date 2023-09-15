@@ -31,7 +31,7 @@ module.exports = {
             const reply = await db.Replies.findOne({
                 where: { id: replyId }
             })
-            if (!reply) return { message: "Oops, it seems like the comment you're after has gone on a little adventure. Let's find it together! Please recheck the ID and give it another shot." }
+            if (!reply) return { message: "Oops, it seems like the reply you're after has gone on a little adventure. Let's find it together! Please recheck the ID and give it another shot." }
             return reply
         } catch (error) {
             console.log(`#createComment: Error: ${error.message}`)
