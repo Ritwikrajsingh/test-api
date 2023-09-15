@@ -32,10 +32,27 @@ module.exports = {
             const replies = await replyService.getReplies(commentId)
             if (replies.message) return res.status(404).json(replies)
             if (replies.error) throw new Error(replies.error)
+
             res.status(200).json(replies)
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: "Something went wrong!" });
         }
-    }
+    },
+
+    getAReply: async (req, res) => {
+        try {
+            const { replyId } = req.params
+            if (!replyId || !isValidUUIDv4(replyId)) return res.status(400).json({ message: "Invalid 'commentId'!" })
+
+            const reply = await replyService?.getAReply(replyId)
+            if (reply.message) return res.status(404).json(reply)
+            if (reply.error) throw new Error(reply.error)
+
+            res.status(200).json(reply)
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Something went wrong!" });
+        }
+    },
 }
